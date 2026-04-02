@@ -1,0 +1,30 @@
+---
+import './Style.css';
+// .NET API'den kategorileri çekip menüye basabilirsin
+// const categories = await fetch('...').then(res => res.json());
+---
+<nav class="main-navbar" data-navbar>
+    <div class="container mx-auto px-4 h-20 flex justify-between items-center">
+        <a href="/web" class="logo">
+            <span class="text-orange-600 font-bold text-2xl tracking-tighter">MYSTORE</span>
+        </a>
+
+        <div class="nav-links hidden md:flex items-center space-x-8">
+            <a href="/web/category/elektronika" class="nav-link">Elektronika</a>
+            <a href="/web/category/geyim" class="nav-link">Geyim</a>
+            <a href="/web/blog" class="nav-link">Bloq</a>
+        </div>
+
+        <div class="nav-actions flex items-center space-x-5">
+            <button class="search-trigger">🔍</button>
+            <a href="/web/account/profile" class="user-icon">👤</a>
+            <a href="/web/cart" class="cart-wrapper relative">
+                🛒 <span class="cart-count">0</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    import './Script.js';
+</script>

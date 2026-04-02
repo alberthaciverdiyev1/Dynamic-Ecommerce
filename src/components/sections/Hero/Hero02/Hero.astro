@@ -1,0 +1,67 @@
+---
+// src/components/sections/Hero02/Hero.astro
+import './Style.css';
+
+interface Props {
+    title?: string;
+    subtitle?: string;
+    description?: string;
+    buttonText?: string;
+    buttonLink?: string;
+    imageSrc?: string;
+    imageAlt?: string;
+    backgroundColor?: string; // Opsiyonel arka plan rengi
+}
+
+const {
+    title = "Premium <br/> <span class='text-orange-600'>Səs</span> Təcrübəsi",
+    subtitle = "Yeni Kolleksiya 2026",
+    description = "Sony-nin ən yeni səs-küyü ləğv edən qulaqlıqları ilə musiqinin dərinliyinə enin. İndi xüsusi endirimlə.",
+    buttonText = "İndi Kəşf Et",
+    buttonLink = "/web/products/sony-wh-1000xm5",
+    imageSrc = "https://images.unsplash.com/photo-1618366712277-70f39e570e6c?q=80&w=800&auto=format&fit=crop", // Örnek Premium Kulaklık Görseli
+    imageAlt = "Premium Headphone",
+    backgroundColor = "bg-gray-50"
+} = Astro.props;
+---
+
+<section class={`hero-v2 ${backgroundColor}`} data-section="hero02">
+    <div class="hero-v2-container container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-20 md:py-32">
+
+        <div class="hero-v2-content flex flex-col items-start text-left" data-aos="fade-up">
+            <span class="hero-v2-subtitle uppercase tracking-widest text-sm font-semibold text-gray-500 mb-4">{subtitle}</span>
+            <h1 class="hero-v2-title text-5xl md:text-7xl font-extrabold tracking-tighter text-gray-950 mb-6 leading-[1.1]" set:html={title} />
+            <p class="hero-v2-description text-lg text-gray-600 mb-12 max-w-lg leading-relaxed">{description}</p>
+
+            <div class="hero-v2-actions flex flex-col sm:flex-row gap-4">
+                <a href={buttonLink} class="hero-v2-btn-primary group">
+                    <span>{buttonText}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+                <a href="/web/category/elektronika" class="hero-v2-btn-secondary">
+                    Kateqoriyalara Bax
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-v2-image-wrapper relative" data-aos="fade-left" data-aos-delay="200">
+            <div class="hero-v2-image-bg absolute -inset-10 bg-orange-100 rounded-full blur-3xl opacity-50"></div>
+            <img src={imageSrc} alt={imageAlt} class="hero-v2-img relative z-10 w-full h-auto object-cover rounded-3xl shadow-2xl shadow-orange-950/10" loading="eager" />
+
+            <div class="absolute -bottom-10 -left-10 bg-white p-5 rounded-2xl shadow-xl z-20 hidden lg:block border border-gray-100">
+                <div class="flex items-center gap-3">
+                    <span class="text-4xl">🎧</span>
+                    <div>
+                        <p class="font-bold text-gray-950">Sony WH-1000XM5</p>
+                        <p class="text-sm text-gray-500">749 AZN <span class="text-xs line-through">899 AZN</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    import './Script.js';
+</script>

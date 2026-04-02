@@ -1,0 +1,50 @@
+@reference "../../../../styles/global.css";
+:root {
+    --gold-primary: #b08d57; /* Tesoro Gold rengi */
+}
+
+.nav-v3 {
+    @apply sticky top-0 z-[1000] bg-white border-b border-gray-50;
+}
+
+.nav-v3-logo-wrapper {
+    @apply flex justify-center items-center;
+}
+
+/* Aksiyon Butonları */
+.nav-v3-icon-btn {
+    @apply p-2.5 bg-gray-50 rounded-full text-gray-700 hover:bg-gold-50 hover:text-[var(--gold-primary)] transition-all duration-300;
+}
+
+/* Menü Linkleri */
+.nav-v3-link {
+    @apply text-[11px] font-bold tracking-[0.15em] text-gray-500 hover:text-[var(--gold-primary)] transition-all relative pb-2 whitespace-nowrap;
+}
+
+/* Aktif Link Alt Çizgisi (Görseldeki gibi) */
+.nav-v3-link.active {
+    @apply text-[var(--gold-primary)];
+}
+
+.nav-v3-link.active::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-[2px] bg-[var(--gold-primary)];
+}
+
+.nav-v3-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold-primary)] transition-all duration-300;
+}
+
+.nav-v3-link:hover::after {
+    @apply w-full;
+}
+
+/* Yatay Menü Scroll Gizleme */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

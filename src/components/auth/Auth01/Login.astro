@@ -1,0 +1,75 @@
+---
+// src/components/shared/auth/Login01/Login.astro
+import './Style.css';
+
+interface Props {
+    title?: string;
+    subtitle?: string;
+    redirectLink?: string;
+    showSocials?: boolean;
+}
+
+const {
+    title = "Daxil Ol",
+    subtitle = "Davam etmək üçün hesabınıza giriş edin.",
+    redirectLink = "/web/auth/Register",
+    showSocials = true
+} = Astro.props;
+---
+
+<div class="login-01-card" data-component="login01">
+    <div class="login-01-header">
+        <h2 class="login-01-title">{title}</h2>
+        <p class="login-01-subtitle">{subtitle}</p>
+    </div>
+
+    <form class="login-01-form" id="loginForm">
+        <div class="login-01-field">
+            <label for="email">E-POÇT</label>
+            <div class="login-01-input-wrapper">
+                <input type="email" id="email" name="email" placeholder="nümunə@mail.com" required />
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="input-icon"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+        </div>
+
+        <div class="login-01-field">
+            <div class="flex justify-between items-center mb-1">
+                <label for="password">ŞİFRƏ</label>
+                <a href="#" class="login-01-forgot">Unutmusunuz?</a>
+            </div>
+            <div class="login-01-input-wrapper">
+                <input type="password" id="password" name="password" placeholder="••••••••" required />
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="input-icon"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+        </div>
+
+        <button type="submit" class="login-01-submit">
+            <span>DAXİL OL</span>
+            <div class="loader hidden"></div>
+        </button>
+    </form>
+
+    {showSocials && (
+            <div class="login-01-divider">
+                <span>və ya</span>
+            </div>
+            <div class="login-01-socials">
+                <button class="social-btn google">
+                    <img src="https://www.svgrepo.com/show/475656/google.svg" alt="Google" />
+                    Google ilə
+                </button>
+                <button class="social-btn github">
+                    <img src="https://www.svgrepo.com/show/512317/github-142.svg" alt="Github" />
+                    Github ilə
+                </button>
+            </div>
+    )}
+
+    <p class="login-01-footer">
+        Hesabınız yoxdur? <a href={redirectLink}>Qeydiyyatdan keçin</a>
+    </p>
+</div>
+
+<script>
+    import './Script.js';
+</script>

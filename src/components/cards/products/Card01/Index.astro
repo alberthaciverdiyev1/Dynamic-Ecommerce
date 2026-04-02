@@ -1,0 +1,49 @@
+---
+// src/components/cards/products/ProductCard01/index.astro
+import './Style.css';
+
+interface Props {
+  id: number | string;
+  name: string;
+  price: number;
+  oldPrice?: number;
+  image: string;
+  slug: string;
+  isNew?: boolean;
+}
+
+const { id, name, price, oldPrice, image, slug, isNew = false } = Astro.props;
+
+// Fiyat formatlama (Azerbaycan Manatı)
+const formattedPrice = new Intl.NumberFormat('az-AZ', { style: 'currency', currency: 'AZN' }).format(price);
+const formattedOldPrice = oldPrice ? new Intl.NumberFormat('az-AZ', { style: 'currency', currency: 'AZN' }).format(oldPrice) : null;
+---
+
+<div class="pc-01" data-product-id={id}>
+  <div class="pc-01-image-wrapper">
+    {isNew && <span class="pc-01-badge">Yeni</span>}
+    <a href={`/web/products/${slug}`}>
+      <img src={image} alt={name} class="pc-01-img" loading="lazy" />
+    </a>
+    <button class="pc-01-wishlist" aria-label="İstək siyahısına əlavə et">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+    </button>
+  </div>
+
+  <div class="pc-01-content">
+    <a href={`/web/products/${slug}`} class="pc-01-title">{name}</a>
+
+    <div class="pc-01-price-row">
+      <span class="pc-01-current-price">{formattedPrice}</span>
+      {oldPrice && <span class="pc-01-old-price">{formattedOldPrice}</span>}
+    </div>
+
+    <button class="pc-01-add-to-cart" data-id={id} data-name={name}>
+      Səbətə At
+    </button>
+  </div>
+</div>
+
+<script>
+  import './Script.js';
+</script>

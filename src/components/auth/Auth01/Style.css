@@ -1,0 +1,74 @@
+@reference "../../../styles/global.css";
+
+.login-01-card {
+    @apply w-full max-w-[450px] bg-white p-10 rounded-[32px] shadow-2xl shadow-gray-200/50 border border-gray-100;
+}
+
+.login-01-title {
+    @apply text-3xl font-black tracking-tighter text-gray-950 mb-2 uppercase;
+}
+
+.login-01-subtitle {
+    @apply text-sm text-gray-500 mb-8 font-medium;
+}
+
+.login-01-field {
+    @apply mb-6;
+}
+
+.login-01-field label {
+    @apply block text-[10px] font-bold tracking-widest text-gray-400 mb-2;
+}
+
+.login-01-input-wrapper {
+    @apply relative flex items-center;
+}
+
+.login-01-input-wrapper input {
+    @apply w-full bg-gray-50 border-2 border-transparent px-5 py-4 rounded-2xl text-sm font-semibold transition-all outline-none pr-12 focus:bg-white focus:border-gray-950;
+}
+
+.input-icon {
+    @apply absolute right-4 text-gray-400;
+}
+
+.login-01-forgot {
+    @apply text-[10px] font-bold text-orange-600 hover:underline;
+}
+
+.login-01-submit {
+    @apply w-full bg-gray-950 text-white py-4 rounded-2xl font-bold tracking-widest text-xs transition-all hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-900/20 active:scale-[0.98] flex justify-center items-center gap-3;
+}
+
+/* Social Buttons */
+.login-01-divider {
+    @apply relative my-8 text-center;
+}
+
+.login-01-divider::before {
+    content: ''; @apply absolute inset-0 flex items-center border-t border-gray-100 top-1/2;
+}
+
+.login-01-divider span {
+    @apply relative bg-white px-4 text-[10px] font-bold uppercase text-gray-300;
+}
+
+.login-01-socials {
+    @apply grid grid-cols-2 gap-4 mb-8;
+}
+
+.social-btn {
+    @apply flex items-center justify-center gap-2 py-3 border-2 border-gray-100 rounded-2xl text-xs font-bold transition-all hover:bg-gray-50 active:scale-95;
+}
+
+.social-btn img {
+    @apply w-4 h-4;
+}
+
+.login-01-footer {
+    @apply text-center text-xs font-medium text-gray-400;
+}
+
+.login-01-footer a {
+    @apply text-gray-950 font-bold hover:text-orange-600 underline underline-offset-4;
+}

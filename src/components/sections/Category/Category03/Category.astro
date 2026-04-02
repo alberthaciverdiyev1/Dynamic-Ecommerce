@@ -1,0 +1,29 @@
+---
+// src/components/shared/sections/Category03/Category.astro
+import './Style.css';
+
+const categories = [
+    { title: "Yeni Kolleksiya", count: "120 Məhsul", image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800", slug: "yeni", gridSpan: "md:col-span-2" },
+    { title: "Aksesuarlar", count: "45 Məhsul", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800", slug: "aksesuar" },
+    { title: "Elektronika", count: "89 Məhsul", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800", slug: "elektronika" },
+    { title: "Ev & Yaşam", count: "67 Məhsul", image: "https://images.unsplash.com/photo-1583847268964-b28dc2f51ac9?q=80&w=800", slug: "ev-yasam", gridSpan: "md:col-span-2" }
+];
+---
+
+<section class="cat-v3 py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+            {categories.map((cat) => (
+                    <a href={`/web/category/${cat.slug}`} class="cat-v3-card group">
+                        <div class="cat-v3-img-box">
+                            <img src={cat.image} alt={cat.title} class="cat-v3-img" />
+                        </div>
+                        <div class="cat-v3-info">
+                            <h3 class="cat-v3-title">{cat.title}</h3>
+                            <span class="cat-v3-link">İndi bax</span>
+                        </div>
+                    </a>
+            ))}
+        </div>
+    </div>
+</section>

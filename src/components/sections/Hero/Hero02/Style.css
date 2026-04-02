@@ -1,0 +1,51 @@
+@reference "../../../../styles/global.css";
+
+.hero-v2 {
+    @apply overflow-hidden relative;
+}
+
+.hero-v2-container {
+    @apply relative z-10;
+}
+
+/* Tipografi */
+.hero-v2-title span {
+    @apply text-orange-600;
+}
+
+/* Butonlar */
+.hero-v2-btn-primary {
+    @apply flex items-center justify-center bg-gray-950 text-white px-10 py-5 rounded-2xl font-bold transition-all hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-900/20 active:scale-95 text-lg;
+}
+
+.hero-v2-btn-secondary {
+    @apply flex items-center justify-center bg-white text-gray-950 px-10 py-5 rounded-2xl font-bold transition-all hover:bg-gray-100 border border-gray-200 active:scale-95 text-lg;
+}
+
+/* Görsel Alanı */
+.hero-v2-image-wrapper {
+    @apply flex justify-center items-center;
+}
+
+.hero-v2-img {
+    @apply max-w-full h-auto transform transition-transform duration-700 hover:scale-105;
+}
+
+[data-aos] {
+    @apply opacity-0 transition-all duration-700 ease-out;
+}
+[data-aos].aos-animate {
+    @apply opacity-100;
+}
+[data-aos="fade-up"] {
+    @apply translate-y-10;
+}
+[data-aos="fade-up"].aos-animate {
+    @apply translate-y-0;
+}
+[data-aos="fade-left"] {
+    @apply translate-x-10;
+}
+[data-aos="fade-left"].aos-animate {
+    @apply translate-x-0;
+}

@@ -1,0 +1,88 @@
+---
+// src/components/shared/footer/Footer02/Footer.astro
+import './Style.css';
+
+// Gelecekte buraya .NET API'den dinamik footer verisi çekebilirsin
+// const footerData = await fetch('...').then(res => res.json());
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="ecommerce-footer-v2" data-footer="footer02">
+    <div class="footer-container container mx-auto px-6 py-12">
+        <div class="footer-grid grid grid-cols-2 md:grid-cols-5 gap-10">
+
+            <div class="col-span-2 md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
+                <h2 class="text-3xl font-extrabold text-orange-600 mb-4 tracking-tighter">MYSTORE<span class="text-gray-900">.</span></h2>
+                <p class="text-gray-600 text-sm mb-6 leading-relaxed max-w-xs">
+                    Güvenli alışverişin adresi. En yeni ürünler ve harika fırsatlar için bizi takip edin.
+                </p>
+                <div class="social-links flex space-x-3">
+                    <a href="#" class="social-icon-v2" aria-label="Instagram">IG</a>
+                    <a href="#" class="social-icon-v2" aria-label="Facebook">FB</a>
+                    <a href="#" class="social-icon-v2" aria-label="Twitter">TW</a>
+                    <a href="#" class="social-icon-v2" aria-label="LinkedIn">IN</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-title">Keşfet</h4>
+                <ul class="footer-menu">
+                    <li><a href="/web/products">Tüm Ürünler</a></li>
+                    <li><a href="/web/category/elektronik">Elektronik</a></li>
+                    <li><a href="/web/category/moda">Moda</a></li>
+                    <li><a href="/web/category/indirim">İndirimler</a></li>
+                    <li><a href="/web/new-arrivals">Yeni Gelenler</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-title">Şirket</h4>
+                <ul class="footer-menu">
+                    <li><a href="/web/about">Hakkımızda</a></li>
+                    <li><a href="/web/careers">Kariyer</a></li>
+                    <li><a href="/web/press">Basın</a></li>
+                    <li><a href="/web/blog">Blog</a></li>
+                    <li><a href="/web/partners">Ortaklarımız</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-title">Destek</h4>
+                <ul class="footer-menu">
+                    <li><a href="/web/contact">İletişim</a></li>
+                    <li><a href="/web/faq">SSS</a></li>
+                    <li><a href="/web/shipping">Kargo Bilgileri</a></li>
+                    <li><a href="/web/returns">İade Politikası</a></li>
+                    <li><a href="/web/track-order">Sipariş Takibi</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-title">Yasal</h4>
+                <ul class="footer-menu">
+                    <li><a href="/web/terms">Kullanım Şartları</a></li>
+                    <li><a href="/web/privacy">Gizlilik Politikası</a></li>
+                    <li><a href="/web/cookies">Çerez Politikası</a></li>
+                    <li><a href="/web/accessibility">Erişilebilirlik</a></li>
+                    <li><a href="/web/security">Güvenlik</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom border-t mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+            <p>&copy; {currentYear} MyStore LLC. Bütün hakları saklıdır.</p>
+            <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-orange-600">Gizlilik</a>
+                <a href="#" class="hover:text-orange-600">Şartlar</a>
+                <a href="#" class="hover:text-orange-600">Harita</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Script.js dosyasını import et (Büyük harfle başlıyorsa S büyük!)
+    import './Script.js';
+</script>

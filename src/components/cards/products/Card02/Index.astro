@@ -1,0 +1,52 @@
+---
+// src/components/cards/products/ProductCard02/index.astro
+import './Style.css';
+
+interface Props {
+  id: number | string;
+  name: string;
+  price: number;
+  oldPrice?: number;
+  image: string;
+  slug: string;
+  category?: string;
+}
+
+const { id, name, price, oldPrice, image, slug, category = "Kolleksiya" } = Astro.props;
+
+const formattedPrice = new Intl.NumberFormat('az-AZ', { style: 'currency', currency: 'AZN' }).format(price);
+---
+
+<div class="pc-02 group" data-product-id={id}>
+  <div class="pc-02-media">
+    <a href={`/web/products/${slug}`} class="block overflow-hidden">
+      <img src={image} alt={name} class="pc-02-img" loading="lazy" />
+    </a>
+
+    <div class="pc-02-overlay">
+      <button class="pc-02-action-btn quick-view" title="Tez bax">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+      <button class="pc-02-action-btn add-to-wishlist" title="İstək siyahısı">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+      </button>
+    </div>
+
+    <button class="pc-02-add-cart" data-id={id}>
+      SƏBƏTƏ ƏLAVƏ ET
+    </button>
+  </div>
+
+  <div class="pc-02-info">
+    <span class="pc-02-cat">{category}</span>
+    <a href={`/web/products/${slug}`} class="pc-02-title">{name}</a>
+    <div class="pc-02-price-box">
+      <span class="pc-02-price">{formattedPrice}</span>
+      {oldPrice && <span class="pc-02-old-price">{oldPrice} AZN</span>}
+    </div>
+  </div>
+</div>
+
+<script>
+  import './Script.js';
+</script>

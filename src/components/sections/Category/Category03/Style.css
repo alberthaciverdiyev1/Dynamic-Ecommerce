@@ -1,0 +1,27 @@
+@reference "../../../../styles/global.css";
+.cat-v3-card {
+    @apply flex flex-col items-center text-center p-6 rounded-3xl bg-gray-50/50 hover:bg-white transition-all duration-500 hover:shadow-2xl hover:shadow-gray-200/50 border border-transparent hover:border-gray-100;
+}
+
+.cat-v3-img-box {
+    @apply w-full aspect-square flex items-center justify-center mb-6 overflow-hidden;
+}
+
+.cat-v3-img {
+    @apply max-w-[80%] max-h-[80%] object-contain transition-transform duration-500 group-hover:scale-110;
+}
+
+.cat-v3-title {
+    @apply text-base font-semibold text-gray-900 mb-1 tracking-tight;
+}
+
+.cat-v3-link {
+    @apply text-xs font-medium text-orange-600 opacity-0 -translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0;
+}
+
+/* Mobil için linkin her zaman görünmesi istersen: */
+@media (max-width: 768px) {
+    .cat-v3-link {
+        @apply opacity-100 translate-y-0 text-gray-400;
+    }
+}

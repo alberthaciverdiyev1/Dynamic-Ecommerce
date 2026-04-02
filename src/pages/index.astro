@@ -1,17 +1,35 @@
 ---
+// src/pages/web/index.astro
+import WebLayout from '../layouts/WebLayout.astro';
+import ProductCard from '../components/cards/products/Card01/Index.astro';
+import Hero from "../components/sections/Hero/Hero03/Hero.astro";
+import Category01 from "../components/sections/Category/Category04/Category.astro";
+import Login from '../components/auth/Auth01/Login.astro';
 
+const products = [
+	{ id: 1, name: "iPhone 15 Pro Max - 256GB Titanium", price: 2899, oldPrice: 3199, image: "https://turbo.azstatic.com/uploads/f660x496/2026%2F04%2F01%2F19%2F07%2F19%2Fbb5b8127-1597-4f10-b4ef-3eca19a1032a%2F41203_mFWf1-l6_zZzgd2xGJGWFA.jpg", slug: "iphone-15-pro-max", isNew: true },
+	{ id: 2, name: "Sony WH-1000XM5 Noise Cancelling Headphones", price: 749, image: "https://turbo.azstatic.com/uploads/f660x496/2026%2F04%2F01%2F19%2F07%2F19%2Fbb5b8127-1597-4f10-b4ef-3eca19a1032a%2F41203_mFWf1-l6_zZzgd2xGJGWFA.jpg", slug: "sony-wh-1000xm5" },
+	{ id: 3, name: "MacBook Air M3 - 13 inch 16GB/512GB", price: 2450, oldPrice: 2600, image: "https://turbo.azstatic.com/uploads/f660x496/2026%2F04%2F01%2F19%2F07%2F19%2Fbb5b8127-1597-4f10-b4ef-3eca19a1032a%2F41203_mFWf1-l6_zZzgd2xGJGWFA.jpg", slug: "macbook-air-m3", isNew: true },
+	{ id: 4, name: "Samsung Galaxy Watch 6 Classic", price: 580, oldPrice: 650, image: "https://turbo.azstatic.com/uploads/f660x496/2026%2F04%2F01%2F19%2F07%2F19%2Fbb5b8127-1597-4f10-b4ef-3eca19a1032a%2F41203_mFWf1-l6_zZzgd2xGJGWFA.jpg", slug: "galaxy-watch-6" }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<WebLayout title="Ana Səhifə | 2026-nın Ən Yaxşı Mağazası">
+<Hero/>
+<Category01/>
+	<section class="py-20 bg-gray-50">
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-16">
+				<h2 class="text-4xl font-bold mb-4">Seçilmiş Məhsullar</h2>
+				<p class="text-gray-500 max-w-md mx-auto">Həftənin ən çox satılan və ən yeni texnoloji oyuncaqları burada.</p>
+			</div>
+
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+				{products.map(product => (
+					<ProductCard {...product} />
+				))}
+			</div>
+		</div>
+	</section>
+
+</WebLayout>

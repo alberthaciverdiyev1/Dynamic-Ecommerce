@@ -1,0 +1,55 @@
+---
+// src/components/sections/Category02/Category.astro
+import './Style.css';
+
+interface CategoryItem {
+    title: string;
+    count: string;
+    image: string;
+    slug: string;
+    gridSpan?: string; // Bazı kutuları daha büyük yapmak için
+}
+
+const categories: CategoryItem[] = [
+    { title: "Yeni Kolleksiya", count: "120 Məhsul", image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=800", slug: "yeni", gridSpan: "md:col-span-2" },
+    { title: "Aksesuarlar", count: "45 Məhsul", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800", slug: "aksesuar" },
+    { title: "Elektronika", count: "89 Məhsul", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800", slug: "elektronika" },
+    { title: "Ev & Yaşam", count: "67 Məhsul", image: "https://images.unsplash.com/photo-1583847268964-b28dc2f51ac9?q=80&w=800", slug: "ev-yasam", gridSpan: "md:col-span-2" }
+];
+---
+
+<section class="cat-v2 py-24 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div class="max-w-xl">
+                <h2 class="text-3xl md:text-5xl font-black tracking-tighter text-gray-900 mb-4 uppercase">
+                    KATEQORİYALAR<span class="text-gold-500">.</span>
+                </h2>
+                <p class="text-gray-500 text-lg">Hər zövqə və hər ehtiyaca uyğun seçilmiş özəl kolleksiyalarımızla tanış olun.</p>
+            </div>
+            <a href="/web/categories" class="cat-v2-all-btn">
+                HAMISINA BAX
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ml-2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {categories.map((cat) => (
+                    <a href={`/web/category/${cat.slug}`} class={`cat-v2-card group ${cat.gridSpan || ''}`}>
+                        <div class="cat-v2-img-wrapper">
+                            <img src={cat.image} alt={cat.title} class="cat-v2-img" />
+                            <div class="cat-v2-overlay"></div>
+                        </div>
+                        <div class="cat-v2-content">
+                            <h4 class="cat-v2-title">{cat.title}</h4>
+                            <span class="cat-v2-count">{cat.count}</span>
+                        </div>
+                    </a>
+            ))}
+        </div>
+    </div>
+</section>
+
+<script>
+    import './Script.js';
+</script>

@@ -1,0 +1,71 @@
+---
+import './Style.css';
+
+// Gelecekte buraya .NET API'den dinamik footer verisi çekebilirsin
+// const footerData = await fetch('...').then(res => res.json());
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="ecommerce-footer" data-footer="footer01">
+    <div class="footer-container container mx-auto px-4">
+        <div class="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-16">
+
+            <div class="footer-brand">
+                <h2 class="text-2xl font-bold text-orange-600 mb-4 tracking-tighter">MYSTORE</h2>
+                <p class="text-gray-500 leading-relaxed mb-6">
+                    Azerbaycan'ın en yenilikçi e-ticaret platformu. 2026 teknolojisi ile güvenli alışverişin adresi.
+                </p>
+                <div class="social-links flex space-x-4">
+                    <a href="#" class="social-icon">Instagram</a>
+                    <a href="#" class="social-icon">Facebook</a>
+                    <a href="#" class="social-icon">LinkedIn</a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4 class="font-bold mb-6 uppercase text-sm tracking-widest">Mağaza</h4>
+                <ul class="space-y-4">
+                    <li><a href="/web/products">Bütün Məhsullar</a></li>
+                    <li><a href="/web/category/elektronika">Elektronika</a></li>
+                    <li><a href="/web/category/geyim">Geyim</a></li>
+                    <li><a href="/web/category/endirim">Endirimlər</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4 class="font-bold mb-6 uppercase text-sm tracking-widest">Dəstək</h4>
+                <ul class="space-y-4">
+                    <li><a href="/web/shipping">Çatdırılma</a></li>
+                    <li><a href="/web/refund">Geri Qaytarma</a></li>
+                    <li><a href="/web/faq">Sual-Cavab</a></li>
+                    <li><a href="/web/contact">Əlaqə</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-newsletter">
+                <h4 class="font-bold mb-6 uppercase text-sm tracking-widest">Xəbərdar Ol</h4>
+                <p class="text-gray-500 mb-4 text-sm">Kampaniyalardan ilk siz xəbərdar olun.</p>
+                <form class="newsletter-form" id="footer-newsletter">
+                    <input type="email" placeholder="E-poçt ünvanınız" required class="newsletter-input" />
+                    <button type="submit" class="newsletter-btn">Abunə Ol</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom border-t py-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+            <p>&copy; {currentYear} MyStore LLC. Bütün hüquqlar qorunur.</p>
+            <div class="payment-methods flex space-x-3 mt-4 md:mt-0">
+                <span class="border px-2 py-1 rounded">Visa</span>
+                <span class="border px-2 py-1 rounded">Mastercard</span>
+                <span class="border px-2 py-1 rounded">Maestro</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Script.js dosyasını import et (Büyük harfle başlıyorsa S büyük!)
+    import './Script.js';
+</script>
