@@ -1,0 +1,52 @@
+---
+// src/components/shared/navbar/Navbar03/Navbar.astro
+import './Style.css';
+---
+
+<nav class="nav-v3" data-navbar="navbar03">
+    <div class="nav-v3-top container mx-auto px-4">
+        <div class="flex justify-between items-center h-20 relative">
+
+            <div class="flex-1 hidden md:block"></div>
+
+            <div class="nav-v3-logo-wrapper">
+                <a href="/web" class="nav-v3-logo">
+                    <img src="https://tesoro.az/assets/web/images/tesero-logo-png.png" alt="Tesoro" class="h-10 md:h-12" />
+                </a>
+            </div>
+
+            <div class="nav-v3-actions flex-1 flex justify-end items-center space-x-4 md:space-x-6">
+                <button class="nav-v3-icon-btn" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                </button>
+                <a href="/web/account/login" class="nav-v3-icon-btn" aria-label="Profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </a>
+                <div class="lang-selector">
+                    <button class="flex items-center text-xs font-bold tracking-tighter uppercase gap-1 px-3 py-1.5 bg-gray-100 rounded-full">
+                        AZ <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-v3-bottom border-t border-gray-100 bg-white/50 backdrop-blur-sm">
+        <div class="container mx-auto px-4">
+            <ul class="nav-v3-menu flex justify-center items-center py-4 space-x-8 md:space-x-12 overflow-x-auto no-scrollbar">
+                <li><a href="/web" class="nav-v3-link active">ANA SƏHİFƏ</a></li>
+                <li><a href="/web/products" class="nav-v3-link">MƏHSULLAR</a></li>
+                <li><a href="/web/catalogs" class="nav-v3-link">KATALOQLAR</a></li>
+                <li><a href="/web/about" class="nav-v3-link">HAQQIMIZDA</a></li>
+                <li><a href="/web/blog" class="nav-v3-link">BLOQLAR</a></li>
+                <li><a href="/web/contact" class="nav-v3-link">ƏLAQƏ</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    import './Script.js';
+</script>

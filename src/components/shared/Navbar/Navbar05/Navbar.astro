@@ -1,0 +1,57 @@
+---
+// src/components/shared/Navbar/Navbar01/Navbar.astro
+import './Style.css';
+import Button from "../../../ui/Buttons/Button01/Button.astro";
+
+const navLinks = [
+    { title: "Ana Səhifə", icon: "🏠", href: "/" },
+    { title: "Haqqımızda", icon: "ℹ️", href: "/about" },
+    { title: "Qiymətləndirilmə", icon: "💰", href: "/pricing" },
+    { title: "Əlaqə", icon: "📞", href: "/web/contact" },
+    { title: "İstə gətirək!", icon: "📦", href: "/request" },
+    { title: "Xoşbəxt müştəri", icon: "😊", href: "/testimonials" },
+    { title: "Jurnal", icon: "📖", href: "/journal" },
+    { title: "Dizayner", icon: "✏️", href: "/designers" },
+];
+---
+
+<nav class="navbar-container">
+    <div class="top-bar">
+        <div class="logo-section">
+            <span class="text-red-600">🌀</span> CASPIAN <span class="font-normal text-gray-500">lighting</span>
+        </div>
+
+        <button class="katalog-btn">
+            <span>☰</span> Kataloq
+        </button>
+
+        <div class="search-wrapper">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
+            <input type="text" placeholder="Axtarış..." class="search-input" />
+        </div>
+
+        <div class="user-actions">
+            <a href="#" title="Profil">👤</a>
+            <a href="#" title="Müqayisə">🔄</a>
+            <a href="#" title="İstək Listi">❤️</a>
+        </div>
+    </div>
+
+    <div class="bottom-bar">
+        <ul class="nav-links">
+            {navLinks.map(link => (
+                    <li>
+                        <a href={link.href} class="nav-item">
+                            <span>{link.icon}</span>
+                            {link.title}
+                        </a>
+                    </li>
+            ))}
+            <li>
+                <a href="/campaigns" class="nav-item kampaniyalar">
+                    <span>🏷️</span> KAMPANİYALAR
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

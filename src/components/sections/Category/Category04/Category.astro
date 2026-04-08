@@ -1,0 +1,77 @@
+---
+// src/components/sections/Category04/Category.astro
+import './Style.css';
+
+interface CategoryItem {
+    title: string;
+    subtitle: string;
+    image: string;
+    slug: string;
+    gridClass?: string; // Bento Grid yerleşimi için
+}
+
+const categories: CategoryItem[] = [
+    {
+        title: "Premium Səs",
+        subtitle: "Qulaqlıqlar",
+        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200",
+        slug: "audio",
+        gridClass: "md:col-span-2 md:row-span-2" // Büyük kutu
+    },
+    {
+        title: "Minimal Saatlar",
+        subtitle: "Aksesuarlar",
+        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800",
+        slug: "watches"
+    },
+    {
+        title: "Ağıllı Ev",
+        subtitle: "Elektronika",
+        image: "https://images.unsplash.com/photo-1583847268964-b28dc2f51ac9?q=80&w=800",
+        slug: "home"
+    },
+    {
+        title: "Yeni Kolleksiya",
+        subtitle: "Moda",
+        image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200",
+        slug: "fashion",
+        gridClass: "md:col-span-2" // Yatay geniş kutu
+    }
+];
+---
+
+<section class="cat-v4 py-24 bg-gray-50/50">
+    <div class="container mx-auto px-4">
+
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-950 tracking-tighter mb-4 leading-tight">
+                Həyat Tərzinizi <br class="hidden md:block"/> <span class="text-orange-600">Yenidən</span> Kəşf Edin
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[280px]">
+            {categories.map((cat, index) => (
+                    <a href={`/web/category/${cat.slug}`} class={`cat-v4-card group ${cat.gridClass || ''}`} data-aos="fade-up" data-aos-delay={index * 100}>
+                        <div class="cat-v4-img-wrapper">
+                            <img src={cat.image} alt={cat.title} class="cat-v4-img" loading="lazy" />
+                            <div class="cat-v4-overlay transition-opacity duration-500 group-hover:opacity-80"></div>
+                        </div>
+
+                        <div class="cat-v4-content flex flex-col justify-end p-8 text-white z-10 transition-transform duration-500 group-hover:-translate-y-3">
+                            <span class="cat-v4-subtitle text-xs uppercase tracking-widest text-white/70 mb-2">{cat.subtitle}</span>
+                            <h3 class="cat-v4-title text-2xl md:text-3xl font-bold tracking-tight mb-4">{cat.title}</h3>
+
+                            <span class="cat-v4-link-btn flex items-center text-xs font-bold tracking-widest uppercase gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              Kəşf Et
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+                        </div>
+                    </a>
+            ))}
+        </div>
+    </div>
+</section>
+
+<script>
+    import './Script.js';
+</script>

@@ -1,0 +1,43 @@
+---
+import {Navbars, Footers} from '../lib/registery.ts';
+
+interface Props {
+    title: string;
+    navbarId?: string;
+    footerId?: string;
+}
+
+const {
+    title,
+    navbarId = "navbar-02",
+    footerId = "footer-01"
+} = Astro.props;
+
+const getNavbar = Navbars[navbarId] || Navbars["navbar-01"];
+const getFooter = Footers[footerId] || Footers["footer-01"];
+
+const SelectedNavbar = (await getNavbar()).default;
+const SelectedFooter = (await getFooter()).default;
+import '../styles/global.css';
+---
+<!doctype html>
+<html lang="az">
+<meta charset="UTF-8" />
+<head>
+    <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<SelectedNavbar/>
+
+<main>
+    <slot/>
+</main>
+
+<SelectedFooter/>
+
+</body>
+</html>

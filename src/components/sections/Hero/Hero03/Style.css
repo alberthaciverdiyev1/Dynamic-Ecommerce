@@ -1,0 +1,65 @@
+@reference "../../../../styles/global.css";
+
+.hero-v3 {
+    @apply h-[80vh] min-h-[600px] w-full relative overflow-hidden;
+}
+
+.mainHeroSwiper {
+    @apply w-full h-full;
+}
+
+.swiper-slide {
+    @apply relative overflow-hidden flex items-center;
+}
+
+.hero-v3-bg {
+    @apply absolute inset-0 z-0;
+}
+
+.hero-v3-img {
+    @apply w-full h-full object-cover scale-105;
+    transition: transform 8s linear;
+}
+
+.swiper-slide-active .hero-v3-img {
+    @apply scale-100;
+}
+
+.hero-v3-overlay {
+    @apply absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent;
+}
+
+/* Tipografi ve Animasyonlar */
+.slide-subtitle {
+    @apply text-orange-500 font-bold tracking-[0.3em] uppercase text-sm mb-4 block;
+}
+
+.slide-title {
+    @apply text-5xl md:text-8xl font-black text-white mb-6 leading-[0.9] tracking-tighter;
+}
+
+.slide-desc {
+    @apply text-gray-300 text-lg mb-10 max-w-lg leading-relaxed;
+}
+
+.hero-v3-btn {
+    @apply inline-block bg-white text-black px-10 py-4 rounded-full font-bold transition-all hover:bg-orange-600 hover:text-white hover:scale-105;
+}
+
+/* Swiper Customization */
+:root {
+    --swiper-theme-color: #ea580c; /* Orange 600 */
+    --swiper-navigation-size: 24px;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    @apply w-12 h-12 bg-white/10 backdrop-blur-md rounded-full text-white border border-white/20 transition-all hover:bg-white hover:text-black;
+}
+
+.swiper-pagination-bullet {
+    @apply bg-white opacity-50;
+}
+
+.swiper-pagination-bullet-active {
+    @apply opacity-100 scale-125;
+}

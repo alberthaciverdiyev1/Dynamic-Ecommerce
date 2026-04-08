@@ -1,0 +1,16 @@
+<section class="py-12 border-b bg-white">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-2xl font-bold">Populyar Kateqoriyalar</h2>
+            <a href="/web/category" class="text-orange-600 font-semibold text-sm hover:underline">Hamısına Bax →</a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {['Elektronika', 'Geyim', 'Aksesuarlar', 'Ev & Yaşam'].map(cat => (
+                    <div class="group cursor-pointer bg-gray-50 p-6 rounded-2xl text-center hover:bg-orange-50 transition-colors border border-transparent hover:border-orange-200">
+                        <div class="w-16 h-16 bg-white rounded-full mx-auto mb-4 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">🛍️</div>
+                        <span class="font-bold text-gray-800">{cat}</span>
+                    </div>
+            ))}
+        </div>
+    </div>
+</section>

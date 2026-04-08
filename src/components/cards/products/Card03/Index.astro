@@ -1,0 +1,68 @@
+---
+import './Style.css';
+
+interface Props {
+    id: number | string;
+    name: string;
+    price: number;
+    oldPrice?: number | null;
+    image: string;
+    slug: string;
+    isNew?: boolean;
+    category?: string;
+}
+
+const { id, name, price, oldPrice, image, slug, isNew = false, category } = Astro.props;
+
+const formatAZN = (val: number) =>
+    new Intl.NumberFormat('az-AZ', {
+        style: 'currency',
+        currency: 'AZN',
+        minimumFractionDigits: 2
+    }).format(val);
+
+const formattedPrice = formatAZN(price);
+const formattedOldPrice = oldPrice ? formatAZN(oldPrice) : null;
+const discountPercent = oldPrice ? Math.round(((oldPrice - price) / oldPrice) * 100) : 0;
+---
+
+<div class="pc-03" data-id={id}>
+    <div class="pc-03-top">
+        {discountPercent > 0 && <div class="pc-03-save">Yadda saxla {discountPercent}%</div>}
+
+        <a href={`/web/products/${id}-details`} class="pc-03-display">
+            <img
+                    src={image || '/placeholder.png'}
+                    alt={name}
+                    class="pc-03-img"
+                    loading="lazy"
+            />
+        </a>
+
+        <div class="pc-03-floating-tools">
+            <button class="tool-btn" aria-label="Sevimlilərə əlavə et">
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="pc-03-body">
+        <div class="pc-03-meta">
+            <span class="pc-03-label">{category || 'Məhsul'}</span>
+            {isNew && <span class="pc-03-new-dot">Yeni</span>}
+        </div>
+
+        <a href={`/web/products/${id}-details`} class="pc-03-name">{name}</a>
+
+        <div class="pc-03-footer">
+            <div class="pc-03-price-group">
+                <span class="price-now">{formattedPrice}</span>
+                {formattedOldPrice && <span class="price-then">{formattedOldPrice}</span>}
+            </div>
+
+            <button class="pc-03-cart-trigger" title="Səbətə at">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none"><path d="M12 5v14M5 12h14"></path></svg>
+            </button>
+        </div>
+    </div>
+</div>

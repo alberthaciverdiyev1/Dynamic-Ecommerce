@@ -1,0 +1,31 @@
+@reference "../../../../styles/global.css"; /* global.css dosyanın yolu neyse onu yaz */
+
+.ecommerce-footer-v2 {
+    @apply bg-gray-50 border-t mt-auto;
+}
+
+.footer-title {
+    @apply font-semibold text-gray-900 mb-5 uppercase text-xs tracking-wider;
+}
+
+.footer-menu li {
+    @apply mb-3;
+}
+
+.footer-menu a {
+    @apply text-gray-600 hover:text-orange-600 transition-colors text-sm;
+}
+
+.social-icon-v2 {
+    @apply w-9 h-9 flex items-center justify-center border border-gray-200 rounded-full text-gray-500 hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all text-xs font-mono;
+}
+
+/* Responsive Düzenlemeler */
+@media (max-width: 768px) {
+    .footer-col {
+        @apply text-center;
+    }
+    .footer-menu {
+        @apply inline-block text-left;
+    }
+}

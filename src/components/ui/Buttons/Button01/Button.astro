@@ -1,0 +1,74 @@
+---
+// src/components/ui/Button.astro
+interface Props {
+    type?: "button" | "submit" | "reset";
+    variant?: "primary" | "secondary" | "outline" | "glass";
+    size?: "sm" | "md" | "lg";
+    color?: "blue" | "red" | "green" | "orange" | "gray";
+    disabled?: boolean;
+    loading?: boolean;
+    border?: string;
+    class?: string;
+    id?: string;
+    [key: string]: any;
+}
+
+const {
+    type = "button",
+    variant = "primary",
+    size = "md",
+    color = "blue",
+    disabled = false,
+    loading = false,
+    border = "",
+    class: className,
+    ...rest
+} = Astro.props;
+
+import './Style.css';
+
+const colorMap = {
+    blue: { bg: "bg-blue-600 hover:bg-blue-700 shadow-blue-500/20", text: "text-blue-600", border: "border-blue-600 hover:bg-blue-50" },
+    red: { bg: "bg-red-600 hover:bg-red-700 shadow-red-500/20", text: "text-red-600", border: "border-red-600 hover:bg-red-50" },
+    green: { bg: "bg-green-600 hover:bg-green-700 shadow-green-500/20", text: "text-green-600", border: "border-green-600 hover:bg-green-50" },
+    orange: { bg: "bg-orange-600 hover:bg-orange-700 shadow-orange-500/20", text: "text-orange-600", border: "border-orange-600 hover:bg-orange-50" },
+    gray: { bg: "bg-gray-800 hover:bg-gray-900 shadow-gray-500/20", text: "text-gray-800", border: "border-gray-800 hover:bg-gray-50" }
+};
+
+const variants = {
+    primary: `${colorMap[color].bg} text-white shadow-md`,
+    secondary: "bg-gray-800 text-white hover:bg-gray-900",
+    outline: `border-2 ${colorMap[color].border} ${colorMap[color].text}`,
+    glass: "glass bg-white/10 backdrop-blur-xl saturate-150 border border-white/20 text-white hover:bg-white/20 shadow-xl"
+};
+
+const sizes = {
+    sm: "px-4 py-1.5 text-sm",
+    md: "px-6 py-2.5 text-base font-medium",
+    lg: "px-8 py-3.5 text-lg font-bold"
+};
+---
+
+<button
+        type={type}
+        disabled={disabled || loading}
+        class:list={[
+            "btn-base",
+            variants[variant],
+            sizes[size],
+            border,
+            { "opacity-50 cursor-not-allowed": disabled || loading },
+            className
+        ]}
+        {...rest}
+>
+    {loading && (
+            <span class="loader-icon">
+            <svg class="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+        </span>
+    )}
+    <slot/>
+</button>

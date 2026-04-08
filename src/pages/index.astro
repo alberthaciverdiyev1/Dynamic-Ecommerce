@@ -1,0 +1,17 @@
+---
+import WebLayout from '../layouts/WebLayout.astro';
+import { ProductSections ,Heros,Categories} from '../lib/registery.ts';
+const activeCardId = "hero-01";
+const productSectionId = "section-01";
+const categorySectionId = "category-02";
+
+const Hero = (await (Heros[activeCardId] || Heros["hero-01"])()).default;
+const ProductSection = (await (ProductSections[productSectionId] || ProductSections["section-01"])()).default;
+const CategorySection = (await (Categories[categorySectionId] || Categories["category-01"])()).default;
+---
+
+<WebLayout title="Ana Səhifə | TeymurStore">
+    <Hero/>
+    <CategorySection/>
+    <ProductSection/>
+</WebLayout>

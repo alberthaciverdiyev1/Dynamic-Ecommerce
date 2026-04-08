@@ -1,0 +1,158 @@
+@reference "../../../../styles/global.css";
+.pc-03 {
+    --primary-orange: #ff6600;
+    --bg-gray: #f9fafb;
+    position: relative;
+    background: #fff;
+    border-radius: 20px;
+    padding: 10px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pc-03:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+}
+
+.pc-03-top {
+    position: relative;
+    background: var(--bg-gray);
+    border-radius: 16px;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pc-03-img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    transition: transform 0.6s ease;
+}
+
+.pc-03:hover .pc-03-img {
+    transform: scale(1.1) rotate(2deg);
+}
+
+.pc-03-save {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #fff;
+    color: #ef4444;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    z-index: 2;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.pc-03-floating-tools {
+    position: absolute;
+    right: -50px;
+    top: 12px;
+    transition: right 0.3s ease;
+}
+
+.pc-03:hover .pc-03-floating-tools {
+    right: 12px;
+}
+
+.tool-btn {
+    background: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    color: #4b5563;
+}
+
+.pc-03-body {
+    padding: 15px 5px 5px;
+}
+
+.pc-03-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.pc-03-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #9ca3af;
+    font-weight: 600;
+}
+
+.pc-03-new-dot {
+    font-size: 10px;
+    background: #dcfce7;
+    color: #166534;
+    padding: 1px 6px;
+    border-radius: 4px;
+}
+
+.pc-03-name {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    text-decoration: none;
+    margin-bottom: 12px;
+    height: 44px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.pc-03-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pc-03-price-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-now {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--primary-orange);
+}
+
+.price-then {
+    font-size: 12px;
+    color: #9ca3af;
+    text-decoration: line-through;
+}
+
+.pc-03-cart-trigger {
+    background: #111827;
+    color: #fff;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pc-03-cart-trigger:hover {
+    background: var(--primary-orange);
+    transform: rotate(90deg);
+}
