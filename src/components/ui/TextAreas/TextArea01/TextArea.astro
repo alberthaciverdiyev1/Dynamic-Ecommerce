@@ -1,0 +1,51 @@
+---
+interface Props {
+    label?: string;
+    name: string;
+    placeholder?: string;
+    rows?: number;
+    required?: boolean;
+    error?: string;
+    variant?: "default" | "glass";
+    class?: string;
+    [key: string]: any;
+}
+
+const {
+    label,
+    name,
+    placeholder,
+    rows = 5,
+    required = false,
+    error,
+    variant = "default",
+    class: className,
+    ...rest
+} = Astro.props;
+
+import './Style.css';
+---
+
+<div class:list={["textarea-wrapper", className]}>
+    {label && (
+            <label for={name} class="label-text">
+                {label} {required && <span class="text-red-500">*</span>}
+            </label>
+    )}
+
+    <textarea
+            id={name}
+            name={name}
+            rows={rows}
+            placeholder={placeholder}
+            required={required}
+            class:list={[
+                "textarea-field",
+                variant,
+                { "error": error }
+            ]}
+            {...rest}
+    ></textarea>
+
+    {error && <span class="error-text">{error}</span>}
+</div>

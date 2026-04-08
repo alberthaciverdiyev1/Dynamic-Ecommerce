@@ -1,0 +1,99 @@
+---
+import './Style.css';
+import Button from "../../../ui/Buttons/Button01/Button.astro"
+import Input from "../../../ui/Inputs/Input01/Input.astro"
+import TextArea from "../../../ui/TextAreas/TextArea01/TextArea.astro"
+---
+
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-grid">
+
+            <div class="form-container">
+                <h2>Mesaj Gönderin</h2>
+                <p>Bize her türlü sorunuz, öneriniz veya iş birliği talebiniz için yazabilirsiniz. En kısa sürede döneceğiz.</p>
+
+                <form action="#" method="POST" class="flex flex-col gap-6">
+                    <Input
+                            label="Tam Adınız"
+                            name="name"
+                            placeholder="John Doe"
+                            required
+                    />
+
+                    <Input
+                            label="E-posta Adresiniz"
+                            name="email"
+                            type="email"
+                            placeholder="john@example.com"
+                            required
+                    />
+
+                    <Input
+                            label="Konu"
+                            name="subject"
+                            placeholder="Destek, İş birliği vb."
+                    />
+
+                    <TextArea
+                            label="Mesajınız"
+                            name="message"
+                            placeholder="Mesajınızı buraya yazın..."
+                            required
+                            rows={6}
+                    />
+
+                    <div class="flex flex-wrap gap-4 mt-4">
+                        <Button type="submit" variant="primary" color="blue">
+                            Mesajı Gönder
+                        </Button>
+
+                        <Button variant="outline" color="gray">
+                            Temizle
+                        </Button>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-6 rounded-2xl mt-4">
+                        <p class="text-white mb-4 text-sm opacity-80">Özel bir teklif mi istiyorsunuz?</p>
+                        <Button variant="glass" class="w-full">Hızlı Teklif Al</Button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="info-container">
+                <div class="info-block">
+                    <h3>İletişim Bilgilerimiz</h3>
+
+                    <div class="info-item">
+                        <span class="icon">📍</span>
+                        <div>
+                            <strong>Adres:</strong>
+                            <p>Yazılım Sokak, Tekno Park No: 123, Maslak/İstanbul</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="icon">📞</span>
+                        <div>
+                            <strong>Telefon:</strong>
+                            <a href="tel:+902121234567">+90 (212) 123 45 67</a>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="icon">✉️</span>
+                        <div>
+                            <strong>E-posta:</strong>
+                            <a href="mailto:iletisim@projeadi.com">iletisim@projeadi.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <div class="map-placeholder">Harita Buraya Gelecek</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

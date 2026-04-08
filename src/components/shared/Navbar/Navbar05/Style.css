@@ -1,0 +1,102 @@
+@reference "../../../../styles/global.css";
+/* src/components/shared/Navbar/Navbar01/Style.css */
+
+.navbar-container {
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Üst Bar: Logo, Katalog, Arama, İkonlar */
+.top-bar {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-section {
+    font-weight: 800;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.katalog-btn {
+    background-color: #f03e2d;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    transition: transform 0.2s;
+}
+
+.search-wrapper {
+    flex-grow: 1;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 15px 10px 45px;
+    border: 1.5px solid #eee;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    border-color: #f03e2d;
+}
+
+.user-actions {
+    display: flex;
+    gap: 20px;
+    font-size: 1.4rem;
+    color: #f03e2d;
+}
+
+/* Alt Bar: Kategoriler ve Linkler */
+.bottom-bar {
+    border-top: 1px solid #f9f9f9;
+    padding: 10px 20px;
+}
+
+.nav-links {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.nav-item:hover {
+    color: #f03e2d;
+}
+
+.kampaniyalar {
+    background-color: #f03e2d;
+    color: white !important;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+}

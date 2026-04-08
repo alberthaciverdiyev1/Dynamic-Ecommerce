@@ -1,0 +1,47 @@
+---
+import './Style.css';
+
+interface Props {
+    label?: string;
+    name: string;
+    type?: "text" | "email" | "password" | "number" | "tel" | "url";
+    placeholder?: string;
+    required?: boolean;
+    error?: string;
+    variant?: "default" | "glass";
+    class?: string;
+    [key: string]: any;
+}
+
+const {
+    label,
+    name,
+    type = "text",
+    placeholder,
+    required = false,
+    error,
+    variant = "default",
+    class: className,
+    ...rest
+} = Astro.props;
+---
+
+<div class:list={["input-wrapper", className]}>
+    {label && <label for={name} class="label-text">{label} {required && "*"}</label>}
+
+    <input
+            id={name}
+            name={name}
+            type={type}
+            placeholder={placeholder}
+            required={required}
+            class:list={[
+                "input-field",
+                variant,
+                { "error": error }
+            ]}
+            {...rest}
+    />
+
+    {error && <span class="error-text">{error}</span>}
+</div>

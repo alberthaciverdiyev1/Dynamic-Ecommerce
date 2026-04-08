@@ -1,74 +1,43 @@
 ---
+import {Navbars, Footers} from '../lib/registery.ts';
+
 interface Props {
-  title: string;
-  description?: string;
-  image?: string;
+    title: string;
+    navbarId?: string;
+    footerId?: string;
 }
 
 const {
-  title,
-  description = "Azerbaycan'ın en güvenilir e-ticaret platformu",
-  image = "/default-og-image.jpg"
+    title,
+    navbarId = "navbar-02",
+    footerId = "footer-01"
 } = Astro.props;
 
-import Navbar from '../components/shared/Navbar/Navbar03/Navbar.astro';
-import Footer from '../components/shared/Footer/Footer01/Footer.astro';
-import { ClientRouter } from 'astro:transitions';
+const getNavbar = Navbars[navbarId] || Navbars["navbar-01"];
+const getFooter = Footers[footerId] || Footers["footer-01"];
+
+const SelectedNavbar = (await getNavbar()).default;
+const SelectedFooter = (await getFooter()).default;
 import '../styles/global.css';
 ---
-
 <!doctype html>
-<html lang="az" class="scroll-smooth">
+<html lang="az">
+<meta charset="UTF-8" />
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
 
-  <title>{title} | MyStore</title>
-  <meta name="description" content={description} />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={image} />
-  <meta property="og:type" content="website" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!--<ClientRouter />-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="min-h-screen flex flex-col bg-gray-50 text-gray-900 font-['Inter']">
+<body>
+<SelectedNavbar/>
 
-<Navbar />
-
-<main class="flex-grow">
-  <slot />
+<main>
+    <slot/>
 </main>
 
-<Footer />
+<SelectedFooter/>
 
-<style is:global>
-  :root {
-    --brand-orange: #ff6600;
-  }
-  ::selection {
-    background-color: var(--brand-orange);
-    color: white;
-  }
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--brand-orange);
-  }
-</style>
 </body>
 </html>
