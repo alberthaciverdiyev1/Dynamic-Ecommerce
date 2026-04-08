@@ -1,0 +1,57 @@
+---
+import { ProductCards } from "../../../../lib/registery.ts";
+
+const response = await fetch('https://teymurstore.az/api/product');
+const { data: products } = await response.json();
+
+const displayProducts = products.slice(0, 6);
+
+const activeCardId = "card-02";
+const SelectedProductCard = (await (ProductCards[activeCardId] || ProductCards["card-01"])()).default;
+import "./Style.css"
+---
+
+<section class="featured-section">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row gap-8">
+
+            <div class="lg:w-1/4">
+                <div class="promo-banner">
+                    <div class="promo-content">
+                        <span class="promo-tag">Yeni Kolleksiya</span>
+                        <h2 class="promo-title">Baharın Ən Çox Satılanları</h2>
+                        <p class="promo-desc">Keyfiyyətli məhsullar, münasib qiymətlərlə TeymurStore-da.</p>
+                        <a href="/products" class="promo-btn">Hamısına Bax</a>
+                    </div>
+                    <div class="promo-overlay"></div>
+                </div>
+            </div>
+
+            <div class="lg:w-3/4">
+                <div class="section-header flex justify-between items-end mb-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900">Seçilmiş Məhsullar</h3>
+                        <div class="h-1 w-12 bg-orange-500 mt-2"></div>
+                    </div>
+                    <div class="flex gap-2">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                    {displayProducts.map((product: any) => (
+                            <SelectedProductCard
+                                    id={product.id}
+                                    name={product.title}
+                                    price={product.price}
+                                    oldPrice={product.discount > 0 ? (product.price + product.discount) : null}
+                                    image={product.images[0]?.image_path}
+                                    slug={product.id.toString()}
+                                    isNew={product.is_pinned}
+                            />
+                    ))}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

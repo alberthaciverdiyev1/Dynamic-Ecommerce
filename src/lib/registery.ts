@@ -21,14 +21,20 @@ export const Heros: ComponentMap = {
 };
 
 export const Categories: ComponentMap = {
-    "cat-01": () => import('../components/sections/Category/Category01/Category.astro'),
-    "cat-02": () => import('../components/sections/Category/Category02/Category.astro'),
+    "category-01": () => import('../components/sections/Category/Category01/Category.astro'),
+    "category-02": () => import('../components/sections/Category/Category02/Category.astro'),
 };
 
 export const ProductCards: ComponentMap = {
     "card-01": () => import('../components/cards/products/Card01/Index.astro'),
     "card-02": () => import('../components/cards/products/Card02/Index.astro'),
+    "card-03": () => import('../components/cards/products/Card03/Index.astro'),
 };
+
+export const ProductSections: ComponentMap = {
+    "section-01":()=> import('../components/sections/Product/Product01/Product.astro'),
+    "section-02":()=> import('../components/sections/Product/Product02/Product.astro'),
+}
 // export const Loaders: ComponentMap = {
 //     "load-neon": () => import('../components/shared/Loaders/NeonLoader.astro'),
 //     "load-minimal": () => import('../components/shared/Loaders/MinimalLoader.astro'),

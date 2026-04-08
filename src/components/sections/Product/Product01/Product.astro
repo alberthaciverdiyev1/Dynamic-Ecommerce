@@ -1,0 +1,29 @@
+---
+import {ProductCards} from "../../../../lib/registery.ts";
+
+const response = await fetch('https://teymurstore.az/api/product');
+const { data: products } = await response.json();
+
+const activeCardId = "card-03";
+const SelectedProductCard = (await (ProductCards[activeCardId] || ProductCards["card-01"])()).default;
+
+---
+<section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8 text-gray-800">Seçilmiş Məhsullar</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {products.map((product: any) => (
+                    <SelectedProductCard
+                            id={product.id}
+                            name={product.title}
+                            price={product.price}
+                            oldPrice={product.discount > 0 ? (product.price + product.discount) : null}
+                            image={product.images[0]?.image_path}
+                            slug={product.id.toString()}
+                            isNew={product.is_pinned}
+                    />
+            ))}
+        </div>
+    </div>
+</section>
