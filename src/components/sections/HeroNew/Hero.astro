@@ -1,0 +1,11 @@
+---
+import type {HeroProps} from "./HeroTypes";
+
+import HeroText from "./Modes/HeroText.astro";
+import HeroSwiper from "./Modes/HeroSwiper.astro";
+
+const { hero } = Astro.props as { hero: HeroProps };
+console.log({hero});
+---
+
+{hero?.Slides?.length ? (<HeroSwiper hero={hero}/> ) : (<HeroText hero={hero}/>)}

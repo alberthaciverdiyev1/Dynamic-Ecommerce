@@ -1,0 +1,79 @@
+---
+import type { HeroProps } from "../HeroTypes";
+const { hero } = Astro.props as { hero: HeroProps };
+---
+
+<!-- SWIPER CSS -->
+<link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
+<!-- SWIPER -->
+<div class="swiper hero-swiper h-screen">
+    <div class="swiper-wrapper">
+        {hero.Slides?.map((s) => (
+                <div class="swiper-slide w-full">
+                    <div
+                            class="w-full h-screen flex items-center justify-center text-white relative"
+                            style={`background:url(${s.Background?.Image}) center/cover no-repeat`}
+                    >
+                        {s.Background?.Overlay?.Color && (
+                                <div
+                                        class="absolute inset-0"
+                                        style={`background:${s.Background.Overlay.Color}`}
+                                />
+                        )}
+
+                        <div class="relative z-10 text-center flex flex-col gap-4 px-6">
+                            <h1 class="text-5xl font-bold">
+                                {s.Content?.Title}
+                            </h1>
+                            <p class="text-lg">
+                                {s.Content?.Subtitle}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+        ))}
+    </div>
+
+    <!-- controls -->
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+
+<!-- SWIPER JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- INIT -->
+<script is:inline>
+    window.addEventListener("load", () => {
+        const el = document.querySelector(".hero-swiper");
+
+        const interval = setInterval(() => {
+            const SwiperClass = window.Swiper;
+
+            if (el && SwiperClass) {
+                new SwiperClass(el, {
+                    loop: true,
+                    autoplay: {
+                        delay: 4000,
+                        disableOnInteraction: false
+                    },
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev"
+                    }
+                });
+
+                clearInterval(interval);
+            }
+        }, 50);
+    });
+</script>

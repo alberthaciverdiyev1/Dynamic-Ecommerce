@@ -1,0 +1,10 @@
+---
+import type { HeroProps } from "../HeroTypes";
+
+const { hero } = Astro.props as { hero: HeroProps };
+---
+
+<section class="py-32 text-center">
+    <h1 class="text-5xl font-bold">{hero.Content?.Title}</h1>
+    <p class="text-lg mt-4">{hero.Content?.Subtitle}</p>
+</section>

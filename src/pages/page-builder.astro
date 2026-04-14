@@ -1,0 +1,191 @@
+---
+---
+
+<html>
+<body class="bg-slate-900 text-white min-h-screen p-6">
+
+<div class="max-w-5xl mx-auto">
+    <h1 class="text-3xl font-bold mb-8">Hero Builder</h1>
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- LEFT PANEL -->
+        <div class="space-y-6">
+
+            <!-- CONTENT -->
+            <div class="bg-slate-800 p-4 rounded-xl">
+                <h2 class="text-lg font-semibold mb-3">Content</h2>
+
+                <input id="title" placeholder="Title"
+                       class="w-full mb-2 px-3 py-2 rounded bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
+
+                <input id="subtitle" placeholder="Subtitle"
+                       class="w-full mb-2 px-3 py-2 rounded bg-slate-700 focus:outline-none"/>
+
+                <input id="desc" placeholder="Description"
+                       class="w-full px-3 py-2 rounded bg-slate-700 focus:outline-none"/>
+            </div>
+
+            <!-- LAYOUT -->
+            <div class="bg-slate-800 p-4 rounded-xl">
+                <h2 class="text-lg font-semibold mb-3">Layout</h2>
+
+                <select id="align"
+                        class="w-full mb-2 px-3 py-2 rounded bg-slate-700">
+                    <option value="center">Center</option>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                </select>
+
+                <select id="vertical"
+                        class="w-full px-3 py-2 rounded bg-slate-700">
+                    <option value="center">Center</option>
+                    <option value="top">Top</option>
+                    <option value="bottom">Bottom</option>
+                </select>
+            </div>
+
+            <!-- BACKGROUND -->
+            <div class="bg-slate-800 p-4 rounded-xl">
+                <h2 class="text-lg font-semibold mb-3">Background</h2>
+
+                <input id="from" placeholder="Gradient From"
+                       class="w-full mb-2 px-3 py-2 rounded bg-slate-700"/>
+
+                <input id="to" placeholder="Gradient To"
+                       class="w-full px-3 py-2 rounded bg-slate-700"/>
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="bg-slate-800 p-4 rounded-xl">
+                <h2 class="text-lg font-semibold mb-3">Buttons</h2>
+
+                <input id="btn1" placeholder="Primary Button"
+                       class="w-full mb-2 px-3 py-2 rounded bg-slate-700"/>
+
+                <input id="btn2" placeholder="Secondary Button"
+                       class="w-full px-3 py-2 rounded bg-slate-700"/>
+            </div>
+
+            <!-- EFFECT -->
+            <div class="bg-slate-800 p-4 rounded-xl">
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" id="gradientText" class="accent-indigo-500"/>
+                    Gradient Text
+                </label>
+            </div>
+
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="space-y-6">
+
+            <!-- PREVIEW -->
+            <div>
+                <h2 class="text-lg font-semibold mb-3">Preview</h2>
+                <div id="preview"
+                     class="rounded-xl overflow-hidden border border-white/10"></div>
+            </div>
+
+            <!-- JSON -->
+            <div>
+                <h2 class="text-lg font-semibold mb-3">JSON</h2>
+                <pre id="json"
+                     class="bg-black p-4 rounded text-xs overflow-auto max-h-[400px]"></pre>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- SCRIPT -->
+<script is:inline>
+    const state = {
+        Mode: "Text",
+        Content: {
+            Title: "Next Gen Store",
+            Subtitle: "Build visually",
+            Description: "Fully customizable system"
+        },
+        Layout: {
+            Align: "center",
+            Vertical: "center"
+        },
+        Background: {
+            Type: "gradient",
+            Gradient: {
+                From: "#0f172a",
+                To: "#1e293b"
+            }
+        },
+        Buttons: {
+            Items: [
+                { Text: "Start", Variant: "primary" },
+                { Text: "Docs", Variant: "secondary" }
+            ]
+        },
+        Effects: {
+            GradientText: true
+        }
+    };
+
+    function update() {
+        const jsonEl = document.getElementById("json");
+        const preview = document.getElementById("preview");
+
+        if (jsonEl) {
+            jsonEl.textContent = JSON.stringify(state, null, 2);
+        }
+
+        if (preview) {
+            preview.innerHTML = `
+            <div style="
+              padding:60px;
+              text-align:${state.Layout.Align};
+              background: linear-gradient(135deg, ${state.Background.Gradient.From}, ${state.Background.Gradient.To});
+              color:white;
+            ">
+              <h1 style="font-size:32px; font-weight:800;">
+                ${state.Content.Title}
+              </h1>
+              <p style="opacity:.8; margin-top:10px;">
+                ${state.Content.Subtitle}
+              </p>
+            </div>
+          `;
+        }
+    }
+
+    function bind() {
+        const ids = ["title","subtitle","desc","align","vertical","from","to","btn1","btn2","gradientText"];
+
+        ids.forEach(id => {
+            const el = document.getElementById(id);
+            if (!el) return;
+
+            el.oninput = el.onchange = function () {
+                if (id === "title") state.Content.Title = this.value;
+                if (id === "subtitle") state.Content.Subtitle = this.value;
+                if (id === "desc") state.Content.Description = this.value;
+                if (id === "align") state.Layout.Align = this.value;
+                if (id === "vertical") state.Layout.Vertical = this.value;
+                if (id === "from") state.Background.Gradient.From = this.value;
+                if (id === "to") state.Background.Gradient.To = this.value;
+                if (id === "btn1") state.Buttons.Items[0].Text = this.value;
+                if (id === "btn2") state.Buttons.Items[1].Text = this.value;
+                if (id === "gradientText") state.Effects.GradientText = this.checked;
+
+                update();
+            };
+        });
+    }
+
+    window.onload = function () {
+        bind();
+        update();
+    };
+</script>
+
+</body>
+</html>

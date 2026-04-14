@@ -1,0 +1,31 @@
+{
+  "Mode": "Image",
+  "Preset": "modern-dark",
+  "Slides": [
+    {
+      "Content": {
+        "Title": "Next Gen Store",
+        "Subtitle": "Build visually"
+      },
+      "Background": {
+        "Image": "https://cdn.pixabay.com/photo/2022/09/27/19/46/ai-generated-7483596_960_720.jpg",
+        "Overlay": { "Color": "rgba(0,0,0,0.5)" }
+      },
+      "Buttons": {
+        "Items": [
+          { "Text": "Start", "Variant": "primary" },
+          { "Text": "Docs", "Variant": "secondary" }
+        ]
+      }
+    },
+    {
+      "Content": {
+        "Title": "Big Sale",
+        "Subtitle": "Up to 50%"
+      },
+      "Background": {
+        "Image": "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI2LTAzL2ZsNTI5NTMxMTY2MDMtaW1hZ2UtbW5lc25vaWkuanBn.jpg"
+      }
+    }
+  ]
+}
